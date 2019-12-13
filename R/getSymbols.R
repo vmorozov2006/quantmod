@@ -916,7 +916,7 @@ function(Symbols,env,
     if(!is.null(getSymbolLookup()[[Symbols[[i]]]]$format))
       asDateArgs$format <- getSymbolLookup()[[Symbols[[i]]]]$format
 
-    fr <- xts(fr[,-1],do.call("as.Date", asDateArgs),src='csv',updated=Sys.time())
+    fr <- xts(fr[,-1],do.call("as.POSIXct", asDateArgs),src='csv',updated=Sys.time())
     colnames(fr) <- paste(toupper(gsub('\\^','',Symbols[[i]])),col.names,sep='.')
     fr <- convert.time.series(fr=fr,return.class=return.class)
     Symbols[[i]] <-toupper(gsub('\\^','',Symbols[[i]])) 
